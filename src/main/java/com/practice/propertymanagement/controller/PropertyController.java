@@ -39,6 +39,7 @@ public class PropertyController {
         List<PropertyModel> propertyList = propertyService.findAll();
         System.out.println(dummy);
         System.out.println(dummy);
+        System.out.println(dummy);
         ResponseEntity<List<PropertyModel>> responseEntity = new ResponseEntity<>(propertyList, HttpStatus.OK);
 
         return responseEntity;
