@@ -9,8 +9,6 @@ public class PropertyModel {
     private Long id;
     private String title;
     private String description;
-    private String ownerName;
-    private String ownerMail;
     private String ownerAddress;
     private int price;
 
