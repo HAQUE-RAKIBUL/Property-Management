@@ -4,6 +4,7 @@ import com.practice.propertymanagement.Entity.PropertyEntity;
 import com.practice.propertymanagement.dto.PropertyModel;
 import com.practice.propertymanagement.service.PropertyService;
 import com.practice.propertymanagement.service.impl.PropertyServiceImpl;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -20,16 +21,12 @@ public class PropertyController {
     @Autowired
     PropertyService propertyService;
     //http://localhost:8080/app/v1/properties/hello
-    /*@GetMapping("/hello")
-    public String getProperty()
-    {
-        return "Hello world";
-    }*/
+
     @PostMapping("/newProperty")
     public ResponseEntity<PropertyModel> saveProperty(@RequestBody PropertyModel propertyModel)
     {
         propertyModel = propertyService.saveProperty(propertyModel);
-       // System.out.println(propertyModel);
+
         ResponseEntity<PropertyModel> responseEntity = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.CREATED);
         return responseEntity;
     }
@@ -37,9 +34,9 @@ public class PropertyController {
     public ResponseEntity<List<PropertyModel>> getAllProperties()
     {
         List<PropertyModel> propertyList = propertyService.findAll();
-        System.out.println(dummy);
-        System.out.println(dummy);
-        System.out.println(dummy);
+        //System.out.println(dummy);
+       // System.out.println(dummy);
+        //System.out.println(dummy);
         ResponseEntity<List<PropertyModel>> responseEntity = new ResponseEntity<>(propertyList, HttpStatus.OK);
 
         return responseEntity;
