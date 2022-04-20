@@ -20,4 +20,7 @@ public class PropertyEntity {
     private String description;
     private String ownerAddress;
     private int price;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private UserEntity userEntity;
 }
