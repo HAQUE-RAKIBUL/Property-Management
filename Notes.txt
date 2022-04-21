@@ -1,6 +1,0 @@
-//viewing swagger default documentation
-http://localhost:8080/v2/api-docs
-
-//viewing swagger UI
-http://localhost:8080/swagger-ui/
-

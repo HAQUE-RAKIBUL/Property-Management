@@ -1,6 +1,5 @@
 package com.practice.propertymanagement.Entity;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -2,12 +2,8 @@ package com.practice.propertymanagement.service.impl;
 
 import com.practice.propertymanagement.Converter.PropertyConverter;
 import com.practice.propertymanagement.Entity.PropertyEntity;
-import com.practice.propertymanagement.Entity.UserEntity;
 import com.practice.propertymanagement.dto.PropertyModel;
-import com.practice.propertymanagement.exception.BusinessException;
-import com.practice.propertymanagement.exception.ErrorModel;
 import com.practice.propertymanagement.repository.PropertyRepository;
-import com.practice.propertymanagement.repository.UserRepository;
 import com.practice.propertymanagement.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,32 +18,13 @@ public class PropertyServiceImpl implements PropertyService {
     private PropertyRepository propertyRepository;
     @Autowired
     private PropertyConverter propertyConverter;
-    @Autowired
-    private UserRepository userRepository;
 
     @Override
     public PropertyModel saveProperty(PropertyModel propertyModel) {
-        /*PropertyEntity pe = propertyConverter.dtoToEntity(propertyModel);
+        PropertyEntity pe = propertyConverter.dtoToEntity(propertyModel);
 
         pe = propertyRepository.save(pe);
-        propertyModel = propertyConverter.entityToDto(pe);*/
-
-        Optional<UserEntity> optUe = userRepository.findById(propertyModel.getUserId());
-        if(optUe.isPresent()) {
-            PropertyEntity pe = propertyConverter.dtoToEntity(propertyModel);
-            pe.setUserEntity(optUe.get());
-            pe = propertyRepository.save(pe);
-
-            propertyModel = propertyConverter.entityToDto(pe);
-        }else{
-            List<ErrorModel> errorModelList = new ArrayList<>();
-            ErrorModel errorModel = new ErrorModel();
-            errorModel.setCode("USER_ID_NOT_EXIST");
-            errorModel.setMessage("User does not exist");
-            errorModelList.add(errorModel);
-
-            throw new BusinessException(errorModelList);
-        }
+        propertyModel = propertyConverter.entityToDto(pe);
 
         return propertyModel;
     }

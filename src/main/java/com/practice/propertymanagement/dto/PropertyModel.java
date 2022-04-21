@@ -11,7 +11,6 @@ public class PropertyModel {
     private String description;
     private String ownerAddress;
     private int price;
-    private Long userId;
 
 
 }

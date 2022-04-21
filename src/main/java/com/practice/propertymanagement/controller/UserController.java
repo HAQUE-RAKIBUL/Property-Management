@@ -11,15 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
 @RestController
 @RequestMapping("/app/v1/properties")
 public class UserController {
     @Autowired
     UserService userService;
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> saveUser(@Valid @RequestBody UserDTO userDTO)
+    public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO)
     {
         userDTO = userService.register(userDTO);
         // System.out.println(propertyModel);
@@ -27,7 +25,7 @@ public class UserController {
 
     }
     @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@Valid @RequestBody UserDTO userDTO)
+    public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO)
     {
         userDTO = userService.login(userDTO.getOwnerMail(), userDTO.getPassword());
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
